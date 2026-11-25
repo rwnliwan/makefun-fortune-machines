@@ -1,0 +1,6 @@
+# Trial log — makefun-fortune-machines
+
+One row per version: version, entry size, findings, change.
+
+- v1 — entry 35 chars — "You will descend, but never arrive." — gradient-descent fortune: the descent is promised, the arrival never comes. Dup-check vs all 801 field titles: descent 0, converge 0, "never arrive" 0; "arrive" 1 hit is a token-timing joke (different mechanism), "loss" 1 hit is "The Bottom of the Loss" (different mechanism). Discarded: "Your lucky numbers are all 429s." (32) — field already has lucky-numbers-are-error-codes twice, incl. 429 ("Your Lucky Numbers Are 0, 1, and 404"; "lucky numbers 404, 500, 429"); "Your cache will outlive your memory." (36) — "The Cache Outlives Its Machine" same mechanism; "The database remembers what you forgot." (39) — memory/forget family saturated (remember 17, forget 10); "Deploy on Friday. Regret by Monday." (35) kept as backup — deploy 0, regret 0, clean. Local run not yet done.
+- v2 — entry 35 chars — same fortune, main.ts + gate guard (throws unless fortune is one line of 1–200 chars). Local run verified twice: `node main.ts` writes `/output/entry.txt` = "You will descend, but never arrive.", Python `len()` 35, single line, no trailing newline. No static-badge string anywhere in repo (grep clean).
